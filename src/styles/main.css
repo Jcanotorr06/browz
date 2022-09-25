@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    background-image: url("/images/pixels-dark.svg");
+    background-position: top left;
+    background-color: hsla(var(--b1) / var(--tw-bg-opacity, 1));
+}
+
+.window-shadow {
+    box-shadow: inset 1px 1px 0 0 #fff, 0 8px 0 0 rgb(0 0 0 / 20%);
+}

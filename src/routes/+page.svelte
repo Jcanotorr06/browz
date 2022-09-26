@@ -2,6 +2,7 @@
 	import { onMount } from "svelte";
     import Button from "../components/button.svelte";
     import Platform from 'platform'
+    import axios from 'axios'
     const loadModule = async () => {
         try {
             // @ts-expect-error
@@ -21,6 +22,7 @@
     let os:any
     let pixelRatio:number
     let adBlock:any
+    let ip:string = '0.0.0.0'
     onMount(async () => {
         let Detect = await loadModule()
 
@@ -35,34 +37,41 @@
         language = navigator.language
         pixelRatio = window.devicePixelRatio
         adBlock = Detect ? await Detect.detectAnyAdblocker() : true
+        ip = await axios.get("https://www.myexternalip.com/json").then(res => res.data.ip)
+        
     })
 </script>
 
-<style>
-    *{
-        font-family: Verdana, Geneva, Tahoma, sans-serif ;
-    }
-</style>
-
 <template>
-    <h1>Welcome to SvelteKit</h1>
-    <p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
-    <div class="grid grid-cols-3 gap-4 p-4">
-        <span>Platform: <span class="font-bold">{platform}</span></span>
-        <span>Version: <span class="font-bold">{version}</span></span>
-        <span>Screen Width: <span class="font-bold">{width}</span></span>
-        <span>Screen Height<span class="font-bold">{height}</span></span>
-        <span>Available Width: <span class="font-bold">{availWidth}</span></span>
-        <span>Available Height: <span class="font-bold">{availHeight}</span></span>
-        <span>Color Depth: <span class="font-bold">{colorDepth} bit</span></span>
-        <span>Cookies: <span class="font-bold">{cookiesEnabled ? 'Enabled' : 'Disabled'}</span></span>
-        <span>Java: <span class="font-bold">{javaEnabled ? 'Enabled' : 'Disabled'}</span></span>
-        <span>Motion: <span class="font-bold">{matches ? 'Prefers Reduced' : 'Smooth'}</span></span>
-        <span>Flash: <span class="font-bold">{flash ? 'Enabled' : 'Disabled'}</span></span>
-        <span>Language: <span class="font-bold">{language}</span></span>
-        <span>Os: <span class="font-bold">{os}</span></span>
-        <span>Pixel Ratio: <span class="font-bold">{pixelRatio}</span></span>
-        <span>Ad Blocker: <span class="font-bold">{adBlock ? 'Enabled' : 'Disabled'}</span></span>
+    <div class="bg-base-100 rounded-sm window-shadow-2 border border-secondary-content p-4 w-full h-full">
+        <header class="flex p-2 align-center justify-between">
+            <div>-</div>
+            <div>
+                <span>ABOUT_YOUR_DEVICE</span>
+            </div>
+            <div>-</div>
+        </header>
+        <div class="grid grid-cols-12 gap-8 p-8 bg-pixels-light">
+            <div class="grid grid-cols-6 col-span-6 gap-8">
+                <div class="p-4 window-shadow-2 border-secondary-focus bg-base-300 col-span-6">Platform: <span class="font-bold">{platform}</span></div>
+                <div class="p-4 window-shadow-2 border-secondary-focus bg-base-300 col-span-3">Version: <span class="font-bold">{version}</span></div>
+                <div class="p-4 window-shadow-2 border-secondary-focus bg-base-300 col-span-3">Screen Width: <span class="font-bold">{width}</span></div>
+                <div class="p-4 window-shadow-2 border-secondary-focus bg-base-300 col-span-3">Screen Height<span class="font-bold">{height}</span></div>
+                <div class="p-4 window-shadow-2 border-secondary-focus bg-base-300 col-span-3">Available Width: <span class="font-bold">{availWidth}</span></div>
+                <div class="p-4 window-shadow-2 border-secondary-focus bg-base-300 col-span-3">Available Height: <span class="font-bold">{availHeight}</span></div>
+                <div class="p-4 window-shadow-2 border-secondary-focus bg-base-300 col-span-3">Color Depth: <span class="font-bold">{colorDepth} bit</span></div>
+                <div class="p-4 window-shadow-2 border-secondary-focus bg-base-300 col-span-6">Cookies: <span class="font-bold">{cookiesEnabled ? 'Enabled' : 'Disabled'}</span></div>
+            </div>
+            <div class="grid grid-cols-6 col-span-6 gap-8">
+                <div class="p-4 window-shadow-2 border-secondary-focus bg-base-300 col-span-3">Java: <span class="font-bold">{javaEnabled ? 'Enabled' : 'Disabled'}</span></div>
+                <div class="p-4 window-shadow-2 border-secondary-focus bg-base-300 col-span-3">Motion: <span class="font-bold">{matches ? 'Prefers Reduced' : 'Smooth'}</span></div>
+                <div class="p-4 window-shadow-2 border-secondary-focus bg-base-300 col-span-6">Flash: <span class="font-bold">{flash ? 'Enabled' : 'Disabled'}</span></div>
+                <div class="p-4 window-shadow-2 border-secondary-focus bg-base-300 col-span-6">Language: <span class="font-bold">{language}</span></div>
+                <div class="p-4 window-shadow-2 border-secondary-focus bg-base-300 col-span-6">Os: <span class="font-bold">{os}</span></div>
+                <div class="p-4 window-shadow-2 border-secondary-focus bg-base-300 col-span-6">Pixel Ratio: <span class="font-bold">{pixelRatio}</span></div>
+                <div class="p-4 window-shadow-2 border-secondary-focus bg-base-300 col-span-3">Ad Blocker: <span class="font-bold">{adBlock ? 'Enabled' : 'Disabled'}</span></div>
+                <div class="p-4 window-shadow-2 border-secondary-focus bg-base-300 col-span-3">Ip Address: <span class="font-bold">{ip}</span></div>
+            </div>
+        </div>
     </div>
-    <Button/>
 </template>

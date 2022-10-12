@@ -43,8 +43,8 @@
 </script>
 
 <template>
-    <div class="bg-base-100 rounded-sm window-shadow-2 border border-secondary-content p-4 w-full h-full">
-        <header class="flex p-2 align-center justify-between">
+    <div class="bg-main rounded-sm window-shadow-2 border border-secondary-content p-4 w-full h-full">
+        <header class="flex p-2 align-center justify-between bg-accent text-card">
             <div>-</div>
             <div>
                 <span>ABOUT_YOUR_DEVICE</span>
@@ -52,25 +52,25 @@
             <div>-</div>
         </header>
         <div class="grid grid-cols-12 gap-8 p-8 bg-pixels-light">
-            <div class="grid grid-cols-6 col-span-6 gap-8">
-                <div class="p-4 window-shadow-2 border-secondary-focus bg-base-300 col-span-6">Platform: <span class="font-bold">{platform}</span></div>
-                <div class="p-4 window-shadow-2 border-secondary-focus bg-base-300 col-span-3">Version: <span class="font-bold">{version}</span></div>
-                <div class="p-4 window-shadow-2 border-secondary-focus bg-base-300 col-span-3">Screen Width: <span class="font-bold">{width}</span></div>
-                <div class="p-4 window-shadow-2 border-secondary-focus bg-base-300 col-span-3">Screen Height<span class="font-bold">{height}</span></div>
-                <div class="p-4 window-shadow-2 border-secondary-focus bg-base-300 col-span-3">Available Width: <span class="font-bold">{availWidth}</span></div>
-                <div class="p-4 window-shadow-2 border-secondary-focus bg-base-300 col-span-3">Available Height: <span class="font-bold">{availHeight}</span></div>
-                <div class="p-4 window-shadow-2 border-secondary-focus bg-base-300 col-span-3">Color Depth: <span class="font-bold">{colorDepth} bit</span></div>
-                <div class="p-4 window-shadow-2 border-secondary-focus bg-base-300 col-span-6">Cookies: <span class="font-bold">{cookiesEnabled ? 'Enabled' : 'Disabled'}</span></div>
+            <div class="grid grid-cols-6 col-span-12 lg:col-span-6 gap-8">
+                <div class="p-4 window-shadow-2 border border-secondary bg-card col-span-6 lg:col-span-6">Platform: <span class="font-bold">{platform}</span></div>
+                <div class="p-4 window-shadow-2 border border-secondary bg-card col-span-6 lg:col-span-3">Version: <span class="font-bold">{version}</span></div>
+                <div class="p-4 window-shadow-2 border border-secondary bg-card col-span-6 lg:col-span-3">Screen Width: <span class="font-bold">{width}</span></div>
+                <div class="p-4 window-shadow-2 border border-secondary bg-card col-span-6 lg:col-span-3">Screen Height<span class="font-bold">{height}</span></div>
+                <div class="p-4 window-shadow-2 border border-secondary bg-card col-span-6 lg:col-span-3">Available Width: <span class="font-bold">{availWidth}</span></div>
+                <div class="p-4 window-shadow-2 border border-secondary bg-card col-span-6 lg:col-span-3">Available Height: <span class="font-bold">{availHeight}</span></div>
+                <div class="p-4 window-shadow-2 border border-secondary bg-card col-span-6 lg:col-span-3">Color Depth: <span class="font-bold">{colorDepth} bit</span></div>
+                <div class="p-4 window-shadow-2 border border-secondary bg-card col-span-6 lg:col-span-6">Cookies: <span class="font-bold">{cookiesEnabled ? 'Enabled' : 'Disabled'}</span></div>
             </div>
-            <div class="grid grid-cols-6 col-span-6 gap-8">
-                <div class="p-4 window-shadow-2 border-secondary-focus bg-base-300 col-span-3">Java: <span class="font-bold">{javaEnabled ? 'Enabled' : 'Disabled'}</span></div>
-                <div class="p-4 window-shadow-2 border-secondary-focus bg-base-300 col-span-3">Motion: <span class="font-bold">{matches ? 'Prefers Reduced' : 'Smooth'}</span></div>
-                <div class="p-4 window-shadow-2 border-secondary-focus bg-base-300 col-span-6">Flash: <span class="font-bold">{flash ? 'Enabled' : 'Disabled'}</span></div>
-                <div class="p-4 window-shadow-2 border-secondary-focus bg-base-300 col-span-6">Language: <span class="font-bold">{language}</span></div>
-                <div class="p-4 window-shadow-2 border-secondary-focus bg-base-300 col-span-6">Os: <span class="font-bold">{os}</span></div>
-                <div class="p-4 window-shadow-2 border-secondary-focus bg-base-300 col-span-6">Pixel Ratio: <span class="font-bold">{pixelRatio}</span></div>
-                <div class="p-4 window-shadow-2 border-secondary-focus bg-base-300 col-span-3">Ad Blocker: <span class="font-bold">{adBlock ? 'Enabled' : 'Disabled'}</span></div>
-                <div class="p-4 window-shadow-2 border-secondary-focus bg-base-300 col-span-3">Ip Address: <span class="font-bold">{ip}</span></div>
+            <div class="grid grid-cols-6 col-span-12 lg:col-span-6 gap-8">
+                <div class="p-4 window-shadow-2 border border-secondary bg-card col-span-6 lg:col-span-3">Java: <span class="font-bold">{javaEnabled ? 'Enabled' : 'Disabled'}</span></div>
+                <div class="p-4 window-shadow-2 border border-secondary bg-card col-span-6 lg:col-span-3">Motion: <span class="font-bold">{matches ? 'Prefers Reduced' : 'Smooth'}</span></div>
+                <div class="p-4 window-shadow-2 border border-secondary bg-card col-span-6 lg:col-span-6">Flash: <span class="font-bold">{flash ? 'Enabled' : 'Disabled'}</span></div>
+                <div class="p-4 window-shadow-2 border border-secondary bg-card col-span-6 lg:col-span-6">Language: <span class="font-bold">{language}</span></div>
+                <div class="p-4 window-shadow-2 border border-secondary bg-card col-span-6 lg:col-span-6">Os: <span class="font-bold">{os}</span></div>
+                <div class="p-4 window-shadow-2 border border-secondary bg-card col-span-6 lg:col-span-6">Pixel Ratio: <span class="font-bold">{pixelRatio}</span></div>
+                <div class="p-4 window-shadow-2 border border-secondary bg-card col-span-6 lg:col-span-3">Ad Blocker: <span class="font-bold">{adBlock ? 'Enabled' : 'Disabled'}</span></div>
+                <div class="p-4 window-shadow-2 border border-secondary bg-card col-span-6 lg:col-span-3">Ip Address: <span class="font-bold">{ip}</span></div>
             </div>
         </div>
     </div>

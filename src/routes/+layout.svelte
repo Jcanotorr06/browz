@@ -2,7 +2,7 @@
 	import '../styles/main.css';
     import { themeChange } from 'theme-change'
 	import { onMount } from 'svelte';
-    let themes = ["wireframe", "retro", "valentine", "coffee", "dracula", "synthwave", "business", "winter"]
+    let themes = ["win98"]
     let i = 0
 
     onMount(() => {
@@ -10,9 +10,9 @@
     })
 </script>
 
-<div class="bg-transparent relative min-h-screen">
+<div class="bg-transparent relative min-h-screen text-primary">
     <header class="container-sm md:p-8 z-50 relative">
-        <nav class="bg-base-100 rounded-sm window-shadow p-4 border border-secondary-content">
+        <nav class="bg-main rounded-sm window-shadow p-4 border border-secondary-content">
             Nav Bar
         </nav>
     </header>
@@ -25,7 +25,7 @@
         </select>
         <slot/>
     </main>
-    <button class="btn btn-lg border border-secondary-content absolute z-20 btn-circle p-4 window-shadow bottom-8 right-8">
+    <button class="btn btn-lg btn-accent border border-secondary absolute z-20 btn-circle p-4 window-shadow bottom-8 right-8">
     </button>
     <div class="z-10 opacity-5 fixed left-0 top-0 right-0 w-full h-auto overflow-hidden">
         <svg height="1605" viewBox="0 0 2885 1605" width="2885" xmlns="http://www.w3.org/2000/svg"

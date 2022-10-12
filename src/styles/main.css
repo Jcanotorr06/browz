@@ -15,7 +15,7 @@
 .bg-pixels-light {
     background-image: url("/images/pixels-light.svg");
     background-position: top left;
-    background-color: hsla(var(--b2) / var(--tw-bg-opacity, 1));
+    background-color: hsla(var(--card) / var(--tw-bg-opacity, 1));
 }
 
 body{

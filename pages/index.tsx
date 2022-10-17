@@ -9,7 +9,7 @@ import Platform from 'platform'
 // @ts-expect-error
 import Detect from 'just-detect-adblock'
 import { useDetectAdBlock } from 'adblock-detect-react'
-import { Pattern } from '../components'
+import { Navbar, Pattern } from '../components'
 
 const LazyLoadedLanding = dynamic(() => import('../components/landing.page'), {
   ssr: false
@@ -49,7 +49,7 @@ const Home: NextPage<Props> = (props) => {
       pixelRatio: devicePixelRatio,
       adBlockEnabled: adBlockEnabled,
       reducedMotion: window.matchMedia("(prefers-reduced-motion: reduce)").matches,
-      javaEnabled: window.navigator.javaEnabled() || false,
+      javaEnabled: true,
       cookiesEnabled: navigator.cookieEnabled
    }))
   }, [adBlockEnabled])
@@ -64,11 +64,7 @@ const Home: NextPage<Props> = (props) => {
       <LazyLoadedLanding handleLoading={handleLoading}/>
     </div>
       <main className={`${loading ? 'invisible' : 'visible'} relative z-40 w-screen h-screen max-h-screen overflow-x-hidden text-primary flex flex-col items-center`}>
-        <nav className="fixed top-0 left-0 z-30 lg:px-3 lg:py-3 mx-auto w-full mb-8">
-          <div className="bg-main h-12 border border-1 border-accent w-full window-shadow flex items-center">
-            <h3>NavBar</h3>
-          </div>
-        </nav>
+        <Navbar/>
         <section className="container mx-auto relative z-20 my-20 lg:my-32">
           <div className="box-border -mx-4">
             <div className="relative border border-accent window-shadow-2 bg-main">
@@ -84,10 +80,10 @@ const Home: NextPage<Props> = (props) => {
                   <div className="grid grid-cols-12 gap-4">
                     <div className='grid grid-cols-12 col-span-12 lg:col-span-6 gap-4'>
                       <article className="window-shadow-2 border border-1 border-accent bg-card col-span-12 px-8 py-6">
-                        <span>Operating System</span>
+                        <span>Operating System: {fields.os}</span>
                       </article>
                       <article className="window-shadow-2 border border-1 border-accent bg-card col-span-12 lg:col-span-6 px-8 py-6">
-                        <span>Color Depth</span>
+                        <span>Color Depth: {fields.colorDepth} bits</span>
                       </article>
                       <article className="window-shadow-2 border border-1 border-accent bg-card col-span-12 lg:col-span-6 px-8 py-6">
                         <span>Flash</span>
@@ -95,28 +91,28 @@ const Home: NextPage<Props> = (props) => {
                     </div>
                     <div className='grid grid-cols-12 col-span-12 lg:col-span-6 gap-4'>
                       <article className="window-shadow-2 border border-1 border-accent bg-card col-span-12 lg:col-span-6 px-8 py-6">
-                        <span>Javascript</span>
+                        <span>Javascript: {fields.javaEnabled ? 'Enabled' : 'Disabled'}</span>
                       </article>
                       <article className="window-shadow-2 border border-1 border-accent bg-card col-span-12 lg:col-span-6 px-8 py-6">
-                        <span>Cookies</span>
+                        <span>Cookies: {fields.cookiesEnabled ? 'Enabled' : 'Disabled'}</span>
                       </article>
                       <article className="window-shadow-2 border border-1 border-accent bg-card col-span-12 px-8 py-6">
-                        <span>Web Browser</span>
+                        <span>Web Browser: {fields.platform} {fields.version}</span>
                       </article>
                     </div>
                   </div>
                   <div className="grid grid-cols-12 gap-4">
                     <article className="window-shadow-2 border border-1 border-accent bg-card col-span-12 lg:col-span-3 px-8 py-6">
-                      <span>Ad blocker</span>
+                      <span>Ad blocker: {fields.adBlockEnabled ? 'Enabled' : 'Disabled'}</span>
                     </article>
                     <article className="window-shadow-2 border border-1 border-accent bg-card col-span-12 lg:col-span-3 px-8 py-6">
-                      <span>Motion</span>
+                      <span>Motion: {fields.reducedMotion ? 'Reduced' : 'No Preference'}</span>
                     </article>
                     <article className="window-shadow-2 border border-1 border-accent bg-card col-span-12 lg:col-span-3 px-8 py-6">
-                      <span>DPI</span>
+                      <span>DPI: {fields.pixelRatio}</span>
                     </article>  
                     <article className="window-shadow-2 border border-1 border-accent bg-card col-span-12 lg:col-span-3 px-8 py-6">
-                      <span>Resolution</span>
+                      <span>Resolution: {fields.width} x {fields.height}</span>
                     </article>
                   </div>
                 </section>
